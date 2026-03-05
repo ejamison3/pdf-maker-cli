@@ -9,7 +9,7 @@ from reportlab.lib import colors
 from reportlab.platypus import Table, TableStyle
 
 
-def render_pdf(code: str, filename: str, output_path: str) -> None:
+def render_pdf(code: str, filename: str, output_path: str, no_color: bool = False) -> None:
     """
     Renders code to a PDF file with syntax highlighting and line numbers.
     """
@@ -82,7 +82,7 @@ def render_pdf(code: str, filename: str, output_path: str) -> None:
             if not val:
                 continue
 
-            color = formatter.style.style_for_token(ttype).get("color")
+            color = None if no_color else formatter.style.style_for_token(ttype).get("color")
             escaped_val = html.escape(val).replace(" ", "\xa0")
 
             if color:
