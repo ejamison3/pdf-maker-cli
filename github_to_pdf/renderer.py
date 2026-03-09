@@ -29,7 +29,7 @@ def render_pdf(code: str, filename: str, output_path: str, no_color: bool = Fals
         fontSize=12,
         spaceAfter=12,
     )
-    story.append(Paragraph(html.escape(filename), title_style))
+    # story.append(Paragraph(html.escape(filename), title_style))
 
     code_style = ParagraphStyle(
         "CodeStyle",
@@ -49,10 +49,27 @@ def render_pdf(code: str, filename: str, output_path: str, no_color: bool = Fals
 
     for i, line_text in enumerate(lines, 1):
         escaped_line = html.escape(line_text).replace(" ", "\xa0")
-        line_num = str(i).rjust(gutter_width)
+        # line_num = str(i).rjust(gutter_width)
+
+        # Calculate the number of spaces needed after the line number
+        # spaces = ' ' * (4-len(str(i)))
+        if i < 10:
+            spaces = '    '  # 4 spaces
+        elif i < 100:
+            spaces = '   '  # 3 spaces
+        else:
+            spaces = '  '  # 2 spaces
+        # print(f'{spaces}end')
+
+        spaces_html = spaces.replace(' ', '&nbsp;')
+
+        # escaped_line = html.escape(escaped_line)
         
         # Black text for both gutter and code
-        full_line_html = f"{html.escape(line_num + ' | ')}{escaped_line if escaped_line else r'\xa0'}"
+        # full_line_html = f"{html.escape(line_num + ' | ')}{escaped_line if escaped_line else r'\xa0'}"
+        # full_line_html = f"{html.escape(line_num)}{spaces}{escaped_line if escaped_line else r'\xa0'}"
+        # full_line_html = f"{str(i)}{spaces_html}{escaped_line if escaped_line else r'\xa0'}"
+        full_line_html = f"{str(i)}{spaces_html}{escaped_line}"
 
         paragraphs.append([Paragraph(full_line_html, code_style)])
 

@@ -1,12 +1,24 @@
 # github-to-pdf
 
-A CLI tool that fetches a GitHub file by URL and renders it as a syntax-highlighted PDF with line numbers.
+A CLI tool that fetches a GitHub file by URL and renders it as a PDF with line numbers without any syntax highlighting.
+This was largely vibe coded and then tweaked by a human to make it as desired. It's an activate work in progress so apologies for the ugly README. 
 
 ## Installation
 
+### Probably unnecessary?
+I don't think you need to do this? But now i can't remember so keeping it here
 ```bash
 pip install -e ".[dev]"
 ```
+
+### venv
+You need to create and activate a virtual environment (venv) for it to run properly.
+
+To create do the following inside the `pdf-maker` folder:
+`python -m venv venv` This creates the virtual environment. You only need to do this once
+`source venv/bin/activate` This activates the virtual environment. You have to do this every time you want to activate the venv
+
+Once you are done, to deactivate the venv do: `deactivate`
 
 ## Running the CLI
 

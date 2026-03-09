@@ -1,0 +1,2 @@
+[console_scripts]
+github-to-pdf = github_to_pdf.cli:main
