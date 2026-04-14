@@ -20,6 +20,13 @@ To create do the following inside the `pdf-maker` folder:
 
 Once you are done, to deactivate the venv do: `deactivate`
 
+### activate toml
+The cli command is defined in pyproject.toml To use it, you first have to install it in the venv as follows:
+```bash
+pip install -e .
+```
+If this errors, make sure you are using the pip in the venv, not the system pip (i.e., do `which pip`) A lot of problems can be solved by just uninstalling and reinstalling venv. 
+
 ## Running the CLI
 
 **Basic usage:**
