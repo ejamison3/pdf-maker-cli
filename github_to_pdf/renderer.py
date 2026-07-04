@@ -26,8 +26,8 @@ def render_pdf(code: str, filename: str, output_path: str, no_color: bool = Fals
         "TitleStyle",
         parent=styles["Normal"],
         fontName="Helvetica-Bold",
-        fontSize=11,
-        spaceAfter=11,
+        fontSize=10,
+        spaceAfter=10,
     )
     # story.append(Paragraph(html.escape(filename), title_style))
 
@@ -35,9 +35,9 @@ def render_pdf(code: str, filename: str, output_path: str, no_color: bool = Fals
         "CodeStyle",
         fontName="Courier",
         fontSize=10,
-        leading=10,
+        leading=8,
         # justifyBreaks=10,
-        # leftIndent=100,
+        # leftIndent=100,x
         # wordWrap="CJK",
         textColor=colors.black,
         backColor=None,
@@ -49,8 +49,20 @@ def render_pdf(code: str, filename: str, output_path: str, no_color: bool = Fals
 
     paragraphs = []
 
+    # formatted_lines = []
+
+    # for i, line_text in enumerate(lines, 1):
+    #     line_number = str(i).rjust(len(str(max(len(lines), 1))))
+    #     formatted_lines.append(f"{line_number}  {line_text}")
+
+    # if formatted_lines:
+    #     story.append(Preformatted("\n".join(formatted_lines), code_style))
     for i, line_text in enumerate(lines, 1):
-        escaped_line = html.escape(line_text).replace(" ", "\xa0")
+        # escaped_line = html.escape(line_text).replace(" ", "\xa0")
+
+        escaped_line = html.escape(line_text)
+        escaped_line = escaped_line.replace(" ", "&nbsp;")
+        escaped_line = escaped_line.replace("\t", "&nbsp;" * 4)
         # line_num = str(i).rjust(gutter_width)
 
         # Calculate the number of spaces needed after the line number
@@ -88,3 +100,4 @@ def render_pdf(code: str, filename: str, output_path: str, no_color: bool = Fals
         story.append(table)
 
     doc.build(story)
+
