@@ -13,8 +13,8 @@ def render_pdf(code: str, filename: str, output_path: str, no_color: bool = Fals
     doc = SimpleDocTemplate(
         output_path,
         pagesize=LETTER,
-        rightMargin=36,
-        leftMargin=36,
+        rightMargin=32,
+        leftMargin=32,
         topMargin=36,
         bottomMargin=36,
     )
@@ -26,17 +26,19 @@ def render_pdf(code: str, filename: str, output_path: str, no_color: bool = Fals
         "TitleStyle",
         parent=styles["Normal"],
         fontName="Helvetica-Bold",
-        fontSize=12,
-        spaceAfter=12,
+        fontSize=11,
+        spaceAfter=11,
     )
     # story.append(Paragraph(html.escape(filename), title_style))
 
     code_style = ParagraphStyle(
         "CodeStyle",
         fontName="Courier",
-        fontSize=8,
-        leading=11,
-        wordWrap="CJK",
+        fontSize=10,
+        leading=10,
+        # justifyBreaks=10,
+        # leftIndent=100,
+        # wordWrap="CJK",
         textColor=colors.black,
         backColor=None,
     )

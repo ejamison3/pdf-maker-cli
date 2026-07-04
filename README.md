@@ -14,11 +14,22 @@ pip install -e ".[dev]"
 ### venv
 You need to create and activate a virtual environment (venv) for it to run properly.
 
-To create do the following inside the `pdf-maker` folder:
-`python -m venv venv` This creates the virtual environment. You only need to do this once
-`source venv/bin/activate` This activates the virtual environment. You have to do this every time you want to activate the venv
+To create do the following inside the `pdf-maker` folder. This creates the virtual environment. You only need to do this once
 
-Once you are done, to deactivate the venv do: `deactivate`
+```bash
+python -m venv venv
+```
+
+This activates the virtual environment. You have to do this every time you want to activate the venv
+```bash
+source venv/bin/activate
+```
+
+
+Once you are done, to deactivate the venv do: 
+```bash
+deactivate
+```
 
 ### activate toml
 The cli command is defined in pyproject.toml To use it, you first have to install it in the venv as follows:
@@ -54,7 +65,11 @@ github-to-pdf https://github.com/psf/requests/blob/main/setup.py -o requests_set
 github-to-pdf https://github.com/encode/httpx/blob/master/httpx/__init__.py --no-color
 ```
 
+## Making edits
+Font, font size and border size can be editted in the `github_to_pdf/renderer.py` file. 
+
 ## Key files
+#### AI generated stuff below
 
 | File | Purpose |
 |---|---|
